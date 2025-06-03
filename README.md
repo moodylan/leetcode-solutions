@@ -18,5 +18,5 @@ This repo contains my personal solutions to LeetCode problems as I complete the 
 - ...and more
 
 ## Solutions
-- [226. Invert Binary Tree](226-invert-binary-tree.py)
-- [104. Maximum Depth of Binary Tree](104-maximum-depth-binary-tree.py)
+- [226. Invert Binary Tree](trees/226-invert-binary-tree.py)
+- [104. Maximum Depth of Binary Tree](trees/104-maximum-depth-binary-tree.py)
