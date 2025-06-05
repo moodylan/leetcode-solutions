@@ -20,3 +20,5 @@ This repo contains my personal solutions to LeetCode problems as I complete the 
 ## Solutions
 - [226. Invert Binary Tree](trees/226-invert-binary-tree.py)
 - [104. Maximum Depth of Binary Tree](trees/104-maximum-depth-binary-tree.py)
+- [543. Diameter of Binary Tree](trees/543-diameter-binary-tree.py)
+- [110. Balanced Binary Tree](trees/110-balanced-binary-tree.py)
