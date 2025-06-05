@@ -1,0 +1,61 @@
+from typing import Optional
+from collections import deque
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+        
+class Solution:
+    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+        balanced = [True]
+
+        def height(root):
+            if not root:
+                return 0
+            left_height = height(root.left)
+
+            if balanced[0] is False:
+                return 0
+
+            right_height = height(root.right)
+
+            if abs(left_height - right_height) > 1:
+                balanced[0] = False
+                return 0
+
+            return 1 + max(left_height, right_height)
+
+        height(root)
+        return balanced[0]
+    
+# Helper function to build a binary tree from a list (LeetCode-style input)
+def build_tree(nodes):
+    if not nodes:
+        return None
+    root = TreeNode(nodes[0])
+    queue = deque([root])
+    idx = 1
+    while queue and idx < len(nodes):
+        current = queue.popleft()
+        if nodes[idx] is not None:
+            current.left = TreeNode(nodes[idx])
+            queue.append(current.left)
+        idx += 1
+        if idx < len(nodes) and nodes[idx] is not None:
+            current.right = TreeNode(nodes[idx])
+            queue.append(current.right)
+        idx += 1
+    return root
+
+# Test case 1: Balanced tree
+balanced_input = [3, 9, 20, None, None, 15, 7]
+balanced_tree = build_tree(balanced_input)
+print("Balanced tree result:", Solution().isBalanced(balanced_tree))  # Expected: True
+
+# Test case 2: Unbalanced tree
+unbalanced_input = [1, 2, 2, 3, 3, None, None, 4, 4]
+unbalanced_tree = build_tree(unbalanced_input)
+print("Unbalanced tree result:", Solution().isBalanced(unbalanced_tree))  # Expected: False
